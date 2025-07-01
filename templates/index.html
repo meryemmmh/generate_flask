@@ -6,9 +6,9 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-  <header>
+  <head>
     <h1>Agence Urbaine d’Oujda – Générateur de lettres</h1>
-  </header>
+  </head>
 
   {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
@@ -24,11 +24,11 @@
     <form method="post" id="form-lettre">
       <div class="field">
         <label for="modele">Sélection du modèle :</label>
-        <select name="modele" id="modele" size="3">
-          {% for m in modeles %}
-            <option value="{{ m }}">{{ m|capitalize }}</option>
-          {% endfor %}
-        </select>
+        <select name="modele" id="modele" required>
+  {% for code, titre in modeles.items() %}
+    <option value="{{ code }}">{{ titre }}</option>
+  {% endfor %}
+</select>
       </div>
 
       <div class="field">
@@ -50,7 +50,13 @@
         <label for="corps">Corps de la lettre :</label>
         <textarea id="corps" name="corps" rows="6" required></textarea>
       </div>
-
+      <div class="field">
+  <label>Sexe :</label>
+  <input type="radio" id="femme" name="sexe" value="femme">
+  <label for="femme">Femme</label>
+  <input type="radio" id="homme" name="sexe" value="homme">
+  <label for="homme">Homme</label>
+      </div>
       <button type="submit">Générer et télécharger</button>
     </form>
   </main>
