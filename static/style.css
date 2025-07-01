@@ -1,0 +1,31 @@
+/* Palette sobre (bleu AUO + gris) */
+:root {
+    --bleu: #004c88;
+    --gris: #f2f4f7;
+    --rouge: #c62828;
+    --vert: #2e7d32;
+  }
+  
+  /* Reset léger */
+  * { box-sizing: border-box; margin: 0; padding: 0; font-family: "Segoe UI", Arial, sans-serif; }
+  
+  body   { background: var(--gris); color: #333; min-height: 100vh; display: flex; flex-direction: column; }
+  header { background: var(--bleu); color: #fff; padding: 20px; text-align: center; }
+  main   { flex: 1; padding: 30px; max-width: 700px; margin: auto; }
+  footer { text-align: center; padding: 10px; font-size: 0.9em; color: #555; }
+  
+  form             { background: #fff; padding: 25px 30px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+  .field           { margin-bottom: 18px; }
+  label            { display: block; margin-bottom: 6px; font-weight: 600; }
+  input, textarea,
+  select           { width: 100%; padding: 9px 12px; border: 1px solid #ccc; border-radius: 5px; font-size: 1rem; }
+  select           { background: #fff; }
+  
+  button           { background: var(--bleu); color: #fff; border: none; padding: 12px 22px; font-size: 1rem; border-radius: 5px; cursor: pointer; }
+  button:hover     { background: #0365b6; }
+  
+  #messages        { list-style: none; margin-bottom: 20px; }
+  #messages li     { padding: 10px 14px; margin-bottom: 10px; border-radius: 5px; }
+  #messages li.warning { background: #fff9c4; }
+  #messages li.danger  { background: #ffebee; color: var(--rouge); }
+  

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Générateur de lettres AUO</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header>
+    <h1>Agence Urbaine d’Oujda – Générateur de lettres</h1>
+  </header>
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <ul id="messages">
+        {% for cat, msg in messages %}
+          <li class="{{ cat }}">{{ msg }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
+
+  <main>
+    <form method="post" id="form-lettre">
+      <div class="field">
+        <label for="modele">Sélection du modèle :</label>
+        <select name="modele" id="modele" size="3">
+          {% for m in modeles %}
+            <option value="{{ m }}">{{ m|capitalize }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="nom">Nom complet :</label>
+        <input type="text" id="nom" name="nom" required>
+      </div>
+
+      <div class="field">
+        <label for="date">Date :</label>
+        <input type="date" id="date" name="date" required>
+      </div>
+
+      <div class="field">
+        <label for="objet">Objet :</label>
+        <input type="text" id="objet" name="objet" required>
+      </div>
+
+      <div class="field">
+        <label for="corps">Corps de la lettre :</label>
+        <textarea id="corps" name="corps" rows="6" required></textarea>
+      </div>
+
+      <button type="submit">Générer et télécharger</button>
+    </form>
+  </main>
+
+  <footer>
+    <p>&copy; Agence Urbaine d’Oujda</p>
+  </footer>
+</body>
+</html>
